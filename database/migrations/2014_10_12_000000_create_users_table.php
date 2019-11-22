@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('cpf');
             $table->string('address');
             $table->string('password');
-            $table->string('image')->nullable();
+            $table->string('photo')->nullable();
             $table->string('is_admin');
             $table->rememberToken();
             $table->timestamps();
