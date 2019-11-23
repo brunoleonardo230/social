@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Ppost;
 
 class User extends Authenticatable
 {
@@ -42,4 +43,8 @@ class User extends Authenticatable
     * @var array
     */
     protected $guarded = ['is_admin'];
+
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
 }
