@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','cpf','address','image'
+        'name', 'email', 'password','cpf','address','photo','active'
     ];
 
     /**
@@ -26,6 +26,20 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token'
     ];
+
+    /**
+    * Opcional, informar a coluna deleted_at como um Mutator de data
+    *
+    * @var array
+    */
+    protected $dates = ['deleted_at'];
+
+    /**
+    * The attributes that aren't mass assignable.
+    *
+    * @var array
+    */
+    protected $guarded = ['is_admin'];
 }
