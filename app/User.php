@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Post;
+use App\Post;
 
 class User extends Authenticatable
 {
@@ -45,6 +45,20 @@ class User extends Authenticatable
     protected $guarded = ['is_admin'];
 
     public function posts(){
-        return $this->belongsTo(Post::class);
+        return $this->hasMany(Post::class);
+    }
+
+    public function folowers(){
+        return $this->belongsToMany(User::class, 'follows','followed_id','follower_id');
+
+    }
+
+    public function folowersPosts(){
+        return $this->belongsToMany(Post::class, 'follows','followed_id','follower_id');
+
+    }
+
+    public function userPosts(){
+        return false;
     }
 }

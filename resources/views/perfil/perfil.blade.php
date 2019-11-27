@@ -16,7 +16,7 @@
                             <ul class="nav nav-pills nav-stacked">
                                 <li role="presentation"><a href="{{route('home')}}">Feed</a></li>
                                 <li role="presentation"><a href="{{route('posts.index')}}">Posts</a></li>
-                                <li role="presentation"><a href="{{route('perfil')}}">Perfil</a></li>
+                                <li role="presentation"><a href="#">Perfil</a></li>
                                 <li role="presentation"><a href="#">Resetar Senha</a></li>
                             </ul>                            
                         </div>
@@ -26,11 +26,34 @@
         </div>
         <div class="col-md-6">
             <div class="panel panel-default">
-                <div class="panel-heading"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Feed</div>
+                <div class="panel-heading"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Perfil</div>
 
                 <div class="panel-body">
                     @include('components.busca-perfis')
-                    
+
+                    @if($perfil)
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img src="{{url('storage/'.$perfil->photo)}}" width="120" alt="User" class="img-circle border img-responsive center-block">
+                            </div>
+                            <div class="row">
+                            <div class="col-md-12">
+                                <button>SEGUIR</button>
+                            </div>
+                        </div>
+                            <div class="col-md-12">
+                                <h3 align="center">{{$perfil->name}}</h3>
+                                <h4 align="center">{{$perfil->email}}</h4>
+                                <h4 align="center">{{$perfil->address}}</h4>
+                            </div>
+                        </div>                        
+                    @else
+                        <div class="row">
+                            <div class="col-md">
+                            <h2>Perfil não encontrado!</h2>
+                            </div>
+                        </div>
+                    @endif   
                     @forelse($posts as $post)
                         <div class="row">
                             <div class="col-md-12">
@@ -54,7 +77,7 @@
                             </div>
                         </div>
                     @endforelse     
-                    {{$posts->links()}}                                       
+                    {{$posts->links()}}                                        
                 </div>
             </div>
         </div>

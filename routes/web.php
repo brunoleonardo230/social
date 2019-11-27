@@ -20,3 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('posts', 'PostController');
+
+Route::get('/perfil', 'PerfilController@index')->name('perfil');
+
+Route::get('/perfil-user/{id}', 'PerfilController@perfil')->name('perfiluser');    

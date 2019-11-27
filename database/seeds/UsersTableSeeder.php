@@ -18,6 +18,8 @@ class UsersTableSeeder extends Seeder
             'cpf' => '12345678900',
             'address' => 'Rua 1, Casa 1, São Luis - Ma',
             'password' => bcrypt('123456'),
+            'photo' => 'user.jpg',
+            'is_admin' => 'V',
             'active' => 1,
         ]);
 

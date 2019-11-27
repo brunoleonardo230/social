@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Post;
 
 class Follow extends Model
 {
@@ -17,4 +18,8 @@ class Follow extends Model
     protected $fillable = [
         'followed_id','follower_id'
     ];
+
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
 }
