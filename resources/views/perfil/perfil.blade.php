@@ -10,14 +10,18 @@
 
                     @if($perfil)
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 padding-15">
                                 <img src="{{url('storage/'.$perfil->photo)}}" width="120" alt="User" class="img-circle border img-responsive center-block">
                             </div>
                             <div class="row">
-                            <div class="col-md-12">
-                                <button>SEGUIR</button>
+                                <div class="col-md-12">
+                                @if(!$bolFollowing)
+                                    <center>
+                                    <a href="{{url('follow/'.$perfil->id)}}" class="btn btn-primary">SEGUIR</a>
+                                    </center>
+                                @endif
+                                </div>
                             </div>
-                        </div>
                             <div class="col-md-12">
                                 <h3 align="center">{{$perfil->name}}</h3>
                                 <h4 align="center">{{$perfil->email}}</h4>

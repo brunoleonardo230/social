@@ -23,4 +23,8 @@ Route::resource('posts', 'PostController');
 
 Route::get('/my-perfil', 'PerfilController@myPerfil')->name('myperfil');
 
-Route::get('/perfil-user/{id}', 'PerfilController@perfilUser')->name('perfiluser');    
+Route::get('/perfil-user/{id}', 'PerfilController@perfilUser')->name('perfiluser'); 
+
+Route::get('/find', 'PerfilController@find');
+
+Route::get('/follow/{id}', 'PerfilController@follow');

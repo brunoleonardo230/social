@@ -61,4 +61,9 @@ class User extends Authenticatable
     public function userPosts(){
         return false;
     }
+
+    public function follow($id)
+    {
+        return $this->folowers()->where('follower_id',$id)->exists();      
+    }
 }

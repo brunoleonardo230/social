@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Post;
+use DB;
 
 class PerfilController extends Controller
 {
@@ -39,11 +40,55 @@ class PerfilController extends Controller
         return view('perfil.index', compact('posts','perfil','folowers'));
     }
 
-    public function perfilUser($id){
+    public function perfilUser($id)
+    {
         $perfil = $this->user->find($id);
         $folowers  = auth()->user()->folowers;        
         $posts = $this->post->where('user_id',$id)->orderBy('id', 'DESC')->paginate(15);
 
-        return view('perfil.perfil', compact('posts','perfil','folowers'));
+        $bolFollowing = auth()->user()->follow($id);
+
+        return view('perfil.perfil', compact('posts','perfil','folowers','bolFollowing'));
+    }
+
+    public function find(Request $request)
+    {
+        $q = $request->q;
+
+        $result = $this->user->where('name','like',"%{$q}%")->orWhere('email','like',"%{$request->q}%")->paginate(10);
+        $folowers  = auth()->user()->folowers;     
+        //dd($request->all(), $result);
+
+        return view('perfil.result', compact('result','perfil','folowers','q'));
+
+    }
+
+    public function follow($id)
+    {
+        $perfil = $this->user->find($id);
+        
+        if(!$perfil){
+            return redirect()->back()->with(['error' => 'Perfil não existe']);     
+        }
+
+        if(auth()->user()->follow($id)){
+            return redirect()->back()->with(['error' => 'Você já segue este perfil']);            
+        }
+
+        try{
+            DB::beginTransaction();
+
+                auth()->user()->folowers()->attach([$id]);
+
+            DB::commit();
+
+            return redirect()->back()->with(['success' => 'Sucesso']);
+
+        }catch(\Exception $e){
+            DB::rollBack();
+
+            return redirect()->back()->with(['error' => 'Erro ao tentar seguir este perfil']);
+        }
+        
     }
 }

@@ -74,6 +74,11 @@
         </nav>
         <main class="py-4 container">
             <div class="row">
+                <div class="col-md-12">
+                    @include('alert.flash-message')
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-3">
                     <div class="panel panel-default">
                         <div class="panel-heading"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> User</div>
@@ -94,8 +99,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                
+                </div>           
+
                 @yield('content')
             </div>
         </main>
