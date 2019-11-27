@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {
         $folowers  = auth()->user()->folowers;
-        $posts = auth()->user()->folowersPosts()->orderBy('id', 'DESC')->paginate(15);
+        $posts = auth()->user()->folowersPosts()->with('user')->orderBy('id', 'DESC')->paginate(15);
         //dd($posts);
         //$posts = $this->post->orderBy('id', 'DESC')->paginate(15);
         return view('home', compact('posts','folowers'));

@@ -20,6 +20,6 @@ class Post extends Model
     ];
 
     public function user(){
-        return $this->hasMany(User::class);
+        return $this->hasOne(User::class,'id')->select('id','name','email');
     }
 }

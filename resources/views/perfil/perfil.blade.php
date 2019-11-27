@@ -17,7 +17,7 @@
                                 <div class="col-md-12">
                                 @if(!$bolFollowing)
                                     <center>
-                                    <a href="{{url('follow/'.$perfil->id)}}" class="btn btn-primary">SEGUIR</a>
+                                        <a href="{{url('follow/'.$perfil->id)}}" class="btn btn-primary">SEGUIR</a>
                                     </center>
                                 @endif
                                 </div>
@@ -35,30 +35,7 @@
                             </div>
                         </div>
                     @endif   
-                    @forelse($posts as $post)
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="panel panel-info">
-                                    <div class="panel-heading">
-                                        <img src="{{url('storage/user.jpg')}}" width="50" alt="User" class="img-circle border">
-                                        {{$post->name}} - {{$post->created_at}}
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="row">
-                                        {{$post->post}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @empty
-                        <div class="row">
-                            <div class="col-md">
-                            <h2>Nenhum post encontrado!</h2>
-                            </div>
-                        </div>
-                    @endforelse     
-                    {{$posts->links()}}                                        
+                    @include('components.post-list')                                       
                 </div>
             </div>
         </div>
