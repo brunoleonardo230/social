@@ -28,7 +28,7 @@ class PerfilController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function myPerfil()
     {
         $userId  = auth()->user()->id;
         $perfil = $this->user->find($userId);
@@ -39,11 +39,10 @@ class PerfilController extends Controller
         return view('perfil.index', compact('posts','perfil','folowers'));
     }
 
-    public function perfil(){
-        $userId  = auth()->user()->id;
-        $perfil = $this->user->find($userId);
+    public function perfilUser($id){
+        $perfil = $this->user->find($id);
         $folowers  = auth()->user()->folowers;        
-        $posts = $this->post->where('user_id',$userId)->orderBy('id', 'DESC')->paginate(15);
+        $posts = $this->post->where('user_id',$id)->orderBy('id', 'DESC')->paginate(15);
 
         return view('perfil.perfil', compact('posts','perfil','folowers'));
     }
