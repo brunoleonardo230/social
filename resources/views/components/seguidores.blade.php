@@ -1,17 +1,23 @@
 <?php
-    $folowers = isset($folowers)? $folowers : [];
+    $users = isset($users)? $users : [];
+    $title = isset($title)? $title : 'Seguidores';
 ?>
 <div class="panel panel-default">
-    <div class="panel-heading"><span class="glyphicon glyphicon-user" aria-hidden="true"> Seguidores</div>
+    <div class="panel-heading"><span class="glyphicon glyphicon-user" aria-hidden="true"> {{$title}}</div>
 
     <div class="panel-body">
         <div class="row">
-        @forelse($folowers as $folower)                     
-            <div class="col-md-4 padding-15 text-center">
-                <a href="{{ url('perfil-user/'.$folower->id) }}">
-                    <img src="{{ url('storage/'.$folower->photo) }}" width="50" alt="{{ $folower->name }}" class="img-circle border"><br>
-                    {{$folower->name}}
+        @forelse($users as $user)                     
+            <div class="col-md-6 card-user padding-15 text-center">
+                <a href="{{ url('perfil-user/'.$user->id) }}">
+                    <img src="{{ url('storage/'.$user->photo) }}" width="50" alt="{{ $user->name }}" class="img-circle border"><br>
+                    {{$user->name}}
                 </a>
+                
+                @if(Auth::user()->is_admin=='V' && $user->active)
+                    <br>
+                    <a href="{{url('user/'.$user->id.'/disable')}}" class="btn-sm btn-danger">Desativar</a>
+                @endif
             </div>                        
         @empty
         </div>

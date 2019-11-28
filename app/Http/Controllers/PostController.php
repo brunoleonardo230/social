@@ -19,7 +19,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = auth()->user()->posts()->orderBy('id', 'DESC')->paginate(10);
+        if(auth()->user()->is_admin == 'V'){
+            $posts = $this->post->orderBy('id', 'DESC')->paginate(10);            
+        }else{
+            $posts = auth()->user()->posts()->orderBy('id', 'DESC')->paginate(10);            
+        }
         return view('posts.index', compact('posts'));
     }
     /**
@@ -60,8 +64,19 @@ class PostController extends Controller
      */
     public function show($id)
     {
+
         try{
-            $post = $this->post->findOrFail($id);
+            if(auth()->user()->is_admin == 'V'){
+                $post = $this->post->find($id);
+            }else{
+                $post = auth()->user()->posts->find($id);
+            }
+            
+
+            if(!$post){
+                return redirect()->back()->with(['error' => 'Post não encontrado']);
+            }
+
             return view('posts.edit', compact('post'));
 
         } catch(\Exception $e) {

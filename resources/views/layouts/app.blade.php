@@ -95,6 +95,9 @@
                                         <li role="presentation"><a href="{{route('posts.index')}}">Posts</a></li>
                                         <li role="presentation"><a href="{{route('myperfil')}}">Perfil</a></li>
                                         <li role="presentation"><a href="#">Resetar Senha</a></li>
+                                        @if(isset(Auth::user()->is_admin) && Auth::user()->is_admin=='V')
+                                            <li role="presentation"><a href="{{route('users')}}">Usuários</a></li>
+                                        @endif
                                     </ul>                            
                                 </div>
                             </div>

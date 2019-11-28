@@ -13,6 +13,6 @@
             </div>
         </div>
         <div class="col-md-3">
-            @include('components.seguidores', ["folowers" => $folowers])
+            @include('components.seguidores', ["users" => $folowers])
         </div>
 @endsection

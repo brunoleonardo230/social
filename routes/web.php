@@ -28,3 +28,7 @@ Route::get('/perfil-user/{id}', 'PerfilController@perfilUser')->name('perfiluser
 Route::get('/find', 'PerfilController@find');
 
 Route::get('/follow/{id}', 'PerfilController@follow');
+
+Route::get('/users', 'UserController@users')->name('users');
+
+Route::get('/user/{id}/disable', 'UserController@disable');

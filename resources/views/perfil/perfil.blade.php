@@ -34,12 +34,14 @@
                                 <h2>Perfil não encontrado!</h2>
                             </div>
                         </div>
-                    @endif   
-                    @include('components.post-list')                                       
+                    @endif  
+                    @if(isset($bolFollowing) && $bolFollowing) 
+                        @include('components.post-list')          
+                    @endif
                 </div>
             </div>
         </div>
         <div class="col-md-3">
-            @include('components.seguidores', ["folowers" => $folowers])
+            @include('components.seguidores', ["users" => $folowers])
         </div>    
 @endsection
