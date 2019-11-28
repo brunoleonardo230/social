@@ -73,6 +73,7 @@
             </div>
         </nav>
         <main class="py-4 container">
+            @section('container')
             <div class="row">
                 <div class="col-md-12">
                     @include('alert.flash-message')
@@ -103,6 +104,7 @@
 
                 @yield('content')
             </div>
+            @show
         </main>
     </div>
 

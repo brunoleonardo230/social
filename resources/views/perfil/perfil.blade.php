@@ -30,8 +30,8 @@
                         </div>                        
                     @else
                         <div class="row">
-                            <div class="col-md">
-                            <h2>Perfil não encontrado!</h2>
+                            <div class="col-md-12 text-center">
+                                <h2>Perfil não encontrado!</h2>
                             </div>
                         </div>
                     @endif   

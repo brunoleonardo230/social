@@ -19,7 +19,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = $this->post->orderBy('id', 'DESC')->paginate(10);
+        $posts = auth()->user()->posts()->orderBy('id', 'DESC')->paginate(10);
         return view('posts.index', compact('posts'));
     }
     /**
