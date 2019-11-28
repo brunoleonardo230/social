@@ -87,7 +87,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md">
-                                    <img src="{{url('storage/user.jpg')}}" width="120" alt="User" class="img-circle border img-responsive center-block">
+                                    <img src="{{asset('user.jpg')}}" width="120" alt="User" class="img-circle border img-responsive center-block">
                                 </div>
                                 <div clas="col-md">
                                     <ul class="nav nav-pills nav-stacked">

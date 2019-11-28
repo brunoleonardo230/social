@@ -13,7 +13,7 @@
                             @forelse($result as $perfil)
                             <tr>
                                 <td>                                    
-                                    <img src="{{ url('storage/'.$perfil->photo) }}" width="50" alt="{{ $perfil->name }}" class="img-circle border">                                    
+                                    <img src="{{ asset($perfil->photo) }}" width="50" alt="{{ $perfil->name }}" class="img-circle border">                                    
                                 
                                     <a href="{{ url('perfil-user/'.$perfil->id) }}">
                                         {{ $perfil->name }}

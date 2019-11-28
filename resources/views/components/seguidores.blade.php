@@ -10,7 +10,7 @@
         @forelse($users as $user)                     
             <div class="col-md-6 card-user padding-15 text-center">
                 <a href="{{ url('perfil-user/'.$user->id) }}">
-                    <img src="{{ url('storage/'.$user->photo) }}" width="50" alt="{{ $user->name }}" class="img-circle border"><br>
+                    <img src="{{ asset($user->photo) }}" width="50" alt="{{ $user->name }}" class="img-circle border"><br>
                     {{$user->name}}
                 </a>
                 

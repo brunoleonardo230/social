@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <img src="{{url('storage/user.jpg')}}" width="50" alt="User" class="img-circle border">
+                    <img src="{{asset('user.jpg')}}" width="50" alt="User" class="img-circle border">
                     {{$post->user->name}} -
                     <small>{{$post->created_at->format('d/m/Y')}}</small>
                 </div>

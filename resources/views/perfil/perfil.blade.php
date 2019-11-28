@@ -11,7 +11,7 @@
                     @if($perfil)
                         <div class="row">
                             <div class="col-md-12 padding-15">
-                                <img src="{{url('storage/'.$perfil->photo)}}" width="120" alt="User" class="img-circle border img-responsive center-block">
+                                <img src="{{asset($perfil->photo)}}" width="120" alt="User" class="img-circle border img-responsive center-block">
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
